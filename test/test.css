@@ -1,0 +1,50 @@
+.red
+{
+    background-color: #f00;
+}
+
+.green
+{
+    background-color: #0f0;
+}
+
+.blue
+{
+    background-color: #00f;
+}
+
+.square
+{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+}
+
+.popup
+{
+    position: absolute;
+}
+
+.popup[data-id="0"]
+{
+    top: 400px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.popup[data-id="1"]
+{
+    top: 400px;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+.popup[data-id="2"]
+{
+    top: 400px;
+    left: 400px;
+    width: 100px;
+    height: 100px;
+}
