@@ -11,7 +11,6 @@
 
     function init() {
         cacheElems();
-        console.log(popups);
         bindEvents();
         hidePopups();
     }
