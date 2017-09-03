@@ -1,11 +1,14 @@
 (function () {
     var popupSelector = '.popup';
-    var hiddenClass = 'popup-hidden';
+    var targetSelector = '.target';
+    var hiddenClass = 'popup_hidden';
+    var activeClass = 'target_active';
 
     var index = 0;
     var isShown = false;
 
     var popups = [];
+    var targets = [];
 
     init();
 
@@ -16,7 +19,8 @@
     }
 
     function cacheElems() {
-        popups = getPopups().sort(popupsComparator);
+        popups = getElems(popupSelector).sort(elemsComparator);
+        targets = getElems(targetSelector).sort(elemsComparator);
     }
 
     function bindEvents() {
@@ -24,9 +28,13 @@
     }
 
     function hidePopups() {
-        popups.forEach(function(popup) {
+        popups.forEach(function (popup) {
             popup.classList.add(hiddenClass);
         });
+
+        targets.forEach(function (target) {
+            target.classList.remove(activeClass);
+        })
     }
 
     function onKeyPress(event) {
@@ -78,20 +86,25 @@
 
         if (isShown) {
             showPopup(popups[index]);
+            lightTarget(targets[index]);
         }
+    }
+
+    function lightTarget(target) {
+        target.classList.add(activeClass);
     }
 
     function showPopup(popup) {
         popup.classList.remove(hiddenClass);
     }
 
-    function getPopups() {
-        var popupElems = document.querySelectorAll(popupSelector);
+    function getElems(selector) {
+        var elems = document.querySelectorAll(selector);
 
-        return Array.prototype.slice.call(popupElems);
+        return Array.prototype.slice.call(elems);
     }
 
-    function popupsComparator(popup1, popup2) {
+    function elemsComparator(popup1, popup2) {
         var id1 = Number(popup1.getAttribute('data-id'));
         var id2 = Number(popup2.getAttribute('data-id'));
 

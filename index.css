@@ -5,7 +5,17 @@
     transition: opacity .25s ease-in-out;
 }
 
-.popup-hidden
+.popup_hidden
 {
     opacity: 0;
+}
+
+.target
+{
+    transition: box-shadow .25s ease-in-out;
+}
+
+.target_active
+{
+    box-shadow: 0 0 8px rgba(255, 255, 0, 1);
 }
